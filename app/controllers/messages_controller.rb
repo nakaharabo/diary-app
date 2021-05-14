@@ -23,7 +23,7 @@ class MessagesController < ApplicationController
 
 
   private
-  def item_params
+  def message_params
     params.require(:message).permit(:name, :image, :description, :price).merge(user_id: current_user.id)
   end
 
