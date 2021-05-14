@@ -21,6 +21,26 @@ class MessagesController < ApplicationController
     end
   end
 
+  def show
+  end
+
+  def edit
+  end
+
+  def update
+    if @message.update(message_params)
+      redirect_to message_path,method: :patch  
+   else
+     render :edit
+   end
+  end
+
+  def destroy
+    
+    @message.destroy
+    redirect_to root_path
+  end
+
 
   private
   def message_params
