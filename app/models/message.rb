@@ -7,7 +7,6 @@ class Message < ApplicationRecord
     validates :name
     validates :image
     validates :description
-     end
         with_options inclusion: { in: (100..500)} do
           with_options format: { with: /\A[0-9]+\z/} do
             validates :price
@@ -15,3 +14,4 @@ class Message < ApplicationRecord
         end
 
    end
+end
