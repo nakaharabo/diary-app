@@ -1,6 +1,8 @@
 class Message < ApplicationRecord
   belongs_to :user
   has_one_attached :image
+  has_one :order
+  has_one :history
 
 
   with_options presence: true do
