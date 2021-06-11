@@ -6,9 +6,16 @@
             <h2 id="room" data-room="<%= @room.id %>" data-user="<%= current_user.id %>"><%= @user.nickname %> さんとのチャット</h2>
                   </div>
 
+      <div class="chats">
             <table class="message table">
+            <thead>
+                <tr>
+                  <th style="text-align: left; font-size: 20px;"><%= current_user.nickname %></th>
+                  <th style="text-align: right; font-size: 20px;"><%= @user.nickname %></th>
+                </tr>
+              </thead>
               
-              <div id="chats">
+    
               <% @chats.each do |chat| %>
                 <% if chat.user_id == current_user.id %>
                 <tbody>
@@ -34,13 +41,14 @@
                 </tbody>
                 <% end %>
               <% end %>
-              </div>
-            </table>
 
-            <div class="send">
+            </table>
+              </div>
+            <div class="send">           
             <%= form_with model: @chat do |f| %>
               <%= f.text_field :message %>
               <%= f.hidden_field :room_id %>
+              <%= f.submit "投稿する" ,class:"send" %>
             <% end %>
             </div>
         </div>

@@ -11,14 +11,15 @@
 /************************************
 ** チャットの吹き出し
 ************************************/
-#chats{
+.chats{
   padding: 20px 10px;
   max-width: 450px;
   margin: 15px auto;
   text-align: right;
   font-size: 14px;
   background: #7da4cd;
-  height: 200px;
+  display: flex;
+  justify-content: center;
 }
 .partner{
   text-align: center;
