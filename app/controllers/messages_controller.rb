@@ -1,11 +1,12 @@
 class MessagesController < ApplicationController
   before_action :authenticate_user!, except: [:index]
-  before_action :find_params, only:[:show, :edit, :update, :destroy, :show ]
+  before_action :find_params, only:[:show, :edit, :update, :destroy ]
   before_action :redirect_root, only:[:edit, :update, :destroy]
 
   
   def index
     @messages = Message.all.order(created_at: "DESC")
+    @user = current_user
   end
 
   def new
@@ -54,4 +55,5 @@ class MessagesController < ApplicationController
   def redirect_root
     redirect_to root_path unless current_user.id == @message.user_id
   end
+  
 end

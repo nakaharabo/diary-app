@@ -1,0 +1,57 @@
+<%= render "shared/header" %>
+<div class="container">
+    <div class="row">
+        <div class="col-xs-6">
+        <div class="partner" >
+            <h2 id="room" data-room="<%= @room.id %>" data-user="<%= current_user.id %>"><%= @user.nickname %> さんとのチャット</h2>
+                  </div>
+
+      <div class="chats">
+            <table class="message table">
+            <thead>
+                <tr>
+                  <th style="text-align: left; font-size: 20px;"><%= current_user.nickname %></th>
+                  <th style="text-align: right; font-size: 20px;"><%= @user.nickname %></th>
+                </tr>
+              </thead>
+              
+    
+              <% @chats.each do |chat| %>
+                <% if chat.user_id == current_user.id %>
+                <tbody>
+                  <tr>
+                    <th>
+                    <div class="says">
+                      <p style="text-align: left;"><%= chat.message %></p>
+                    </div>
+                    </th>
+                    <th></th>
+                  </tr>
+                </tbody>
+                <% else %>
+                <tbody>
+                  <tr>
+                    <th></th>
+                    <th>
+                    <div class="says">
+                      <p style="text-align: right;"><%= chat.message %></p>
+                    </div>
+                    </th>
+                  </tr>
+                </tbody>
+                <% end %>
+              <% end %>
+
+            </table>
+              </div>
+            <div class="send">           
+            <%= form_with model: @chat do |f| %>
+              <%= f.text_field :message %>
+              <%= f.hidden_field :room_id %>
+              <%= f.submit "投稿する" ,class:"send" %>
+            <% end %>
+            </div>
+        </div>
+    </div>
+</div>
+<%= render "shared/footer" %>

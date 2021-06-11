@@ -1,0 +1,13 @@
+<%= render "shared/header" %>
+<table class="rooms">
+  <tbody>
+    <tr>
+      <td>
+        <%@chat_partners.each do |chat_partner|%>
+          <%=link_to "#{chat_partner.nickname}さんとのトークルーム","/chats/#{chat_partner.id}"%><br>
+        <%end%>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<%= render "shared/footer" %>
