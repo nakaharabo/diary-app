@@ -5,4 +5,7 @@ Rails.application.routes.draw do
   resources :messages do
     resources :orders, only: [:index, :create]
   end
+  resources :chats, only: [:index, :create, :show]
+  resources :users, only: [:show]
+
 end

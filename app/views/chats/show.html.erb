@@ -1,2 +1,49 @@
-<h1>Chats#show</h1>
-<p>Find me in app/views/chats/show.html.erb</p>
+<%= render "shared/header" %>
+<div class="container">
+    <div class="row">
+        <div class="col-xs-6">
+        <div class="partner" >
+            <h2 id="room" data-room="<%= @room.id %>" data-user="<%= current_user.id %>"><%= @user.nickname %> さんとのチャット</h2>
+                  </div>
+
+            <table class="message table">
+              
+              <div id="chats">
+              <% @chats.each do |chat| %>
+                <% if chat.user_id == current_user.id %>
+                <tbody>
+                  <tr>
+                    <th>
+                    <div class="says">
+                      <p style="text-align: left;"><%= chat.message %></p>
+                    </div>
+                    </th>
+                    <th></th>
+                  </tr>
+                </tbody>
+                <% else %>
+                <tbody>
+                  <tr>
+                    <th></th>
+                    <th>
+                    <div class="says">
+                      <p style="text-align: right;"><%= chat.message %></p>
+                    </div>
+                    </th>
+                  </tr>
+                </tbody>
+                <% end %>
+              <% end %>
+              </div>
+            </table>
+
+            <div class="send">
+            <%= form_with model: @chat do |f| %>
+              <%= f.text_field :message %>
+              <%= f.hidden_field :room_id %>
+            <% end %>
+            </div>
+        </div>
+    </div>
+</div>
+<%= render "shared/footer" %>
