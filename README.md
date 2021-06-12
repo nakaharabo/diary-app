@@ -1,4 +1,4 @@
-![DiaryApp(かんたん保育日報アプリ)](https://gyazo.com/8028841e31fc4a4ded87b6815798500c)
+![DiaryApp(かんたん保育日報アプリ)](スクリーンショット 2021-05-17 10.55.15.png)
 
 <h2 align="center">Diayr App</h2>
 
